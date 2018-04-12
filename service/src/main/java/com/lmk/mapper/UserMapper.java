@@ -10,6 +10,8 @@ public interface UserMapper {
 	
 	User getOne(Long id);
 
+	User loginByUserName(String username);
+
 	void insert(User user);
 
 	void update(User user);

@@ -1,0 +1,4 @@
+domain/domain.iml service/service.iml web/web.iml
+*/*.iml
+*/target/
+*.iml

@@ -4,10 +4,11 @@
     <resultMap id="BaseResultMap" type="com.lmk.user.User" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="username" property="name" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
     </resultMap>
     
     <sql id="Base_Column_List" >
-        id, username
+        id, username,password
     </sql>
 
     <select id="getAll" resultMap="BaseResultMap"  >
@@ -23,19 +24,26 @@
 	   WHERE id = #{id}
     </select>
 
+    <select id="loginByUserName" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM users
+        WHERE username = #{name}
+    </select>
+
     <insert id="insert" parameterType="com.lmk.user.User" >
        INSERT INTO 
        		users
-       		(username)
+       		(username,password)
        	VALUES
-       		(#{name})
+       		(#{name},#{password})
     </insert>
     
     <update id="update" parameterType="com.lmk.user.User" >
        UPDATE 
        		users 
        SET
-       	<if test="name != null">username = #{name},</if>
+       	<if test="name != null">username = #{name},password = #{password},</if>
        WHERE 
        		id = #{id}
     </update>

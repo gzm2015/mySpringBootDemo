@@ -12,24 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = ServiceApplication.class)
 public class ServiceApplicationTests {
 
-	@Autowired
-	UserMapper userMapper;
 
-	@Test
-	public void contextLoads() {
-	}
-
-	@Test
-	public void testName() {
-		User user = new User();
-		System.out.println("");
-	}
-
-	@Test
-	public void testInsert() {
-		User user = new User("2","kkk");
-		userMapper.insert(user);
-
-	}
 
 }
