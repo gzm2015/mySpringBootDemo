@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/test1" driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+    <javaModelGenerator targetPackage="com.lmk.user" targetProject="../domain/src/main/java" >
+    	<property name="enableSubPackages" value="true"/>
+    	<property name="enableSubPackages" value="true"/>
+    	<property name="immutable" value="false"/>
+    	<property name="trimStrings" value="true"/>
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="com.lmk.service" targetProject="../service/src/main/resources">
+    </sqlMapGenerator>
+    <javaClientGenerator targetPackage="com.lmk.mapper" targetProject="../service/src/main/java" type="XMLMAPPER" >
+    	<property name="enableSubPackages" value="true"/>
+    </javaClientGenerator>
+    <table tableName="department">
+      <columnOverride column="name" property="departmentName" />
+    </table>
+  </context>
+</generatorConfiguration>
