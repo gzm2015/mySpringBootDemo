@@ -4,20 +4,27 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
   <context id="context1">
+    <property name="javaFileEncoding" value="UTF-8"/>
     <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/test1" driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
     <javaModelGenerator targetPackage="com.lmk.user" targetProject="../domain/src/main/java" >
-    	<property name="enableSubPackages" value="true"/>
-    	<property name="enableSubPackages" value="true"/>
+    	<property name="enableSubPackages" value="false"/>
+    	<property name="enableSubPackages" value="false"/>
     	<property name="immutable" value="false"/>
     	<property name="trimStrings" value="true"/>
     </javaModelGenerator>
-    <sqlMapGenerator targetPackage="com.lmk.service" targetProject="../service/src/main/resources">
+
+    <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="../service/src/main/resources">
+        <property name="enableSubPackages" value="false" />
     </sqlMapGenerator>
+
     <javaClientGenerator targetPackage="com.lmk.mapper" targetProject="../service/src/main/java" type="XMLMAPPER" >
-    	<property name="enableSubPackages" value="true"/>
+        <property name="enableSubPackages" value="false" />
     </javaClientGenerator>
-    <table tableName="department">
-      <columnOverride column="name" property="departmentName" />
+
+    <table tableName="users">
+      <columnOverride column="id" property="id" />
+      <columnOverride column="username" property="userName" />
+      <columnOverride column="password" property="passWord" />
     </table>
   </context>
 </generatorConfiguration>

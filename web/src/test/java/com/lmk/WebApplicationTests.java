@@ -1,45 +1,38 @@
 package com.lmk;
 
 
-import com.lmk.mapper.UserMapper;
+import com.lmk.mapper.DepartmentMapper;
 import com.lmk.mapper.UserRoleMapper;
-import com.lmk.user.User;
+import com.lmk.user.Department;
+import com.lmk.user.DepartmentExample;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WebApplication.class)
 public class WebApplicationTests {
 
-	@Autowired
-	UserMapper userMapper;
+
 
 	@Autowired
 	UserRoleMapper userRoleMapper;
 
-	@Test
-	public void contextLoads() {
-	}
+	@Autowired
+	DepartmentMapper departmentMapper;
+
 
 	@Test
-	public void testName() {
-		User user = new User();
-		System.out.println("");
-	}
-
-	@Test
-	public void testInsert() {
-		User user = new User("2","kkk");
-		userMapper.insert(user);
-	}
-
-	@Test
-	public void testUserRole() {
-		User user = userRoleMapper.selectUserRoleByUserId("132");
-		System.out.println(user);
+	public void testDepartment() {
+		DepartmentExample departmentExample = new DepartmentExample();
+		departmentExample.createCriteria().andDepartmentNameEqualTo("yajun");
+		List<Department> departments = departmentMapper.selectByExample(departmentExample);
+		Assert.assertTrue(departments.size()>0);
 	}
 
 

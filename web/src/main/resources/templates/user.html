@@ -6,6 +6,11 @@
     <title>Title</title>
 </head>
 <body>
-<p th:text="'Hello, ' + ${user.name} + '!'"/>
+<div th:each="user : ${userList}">
+    <div th:object="${user}">
+        <span th:text="*{userName}">...</span>
+        <span th:text="*{passWord}">...</span>
+    </div>
+</div>
 </body>
 </html>
