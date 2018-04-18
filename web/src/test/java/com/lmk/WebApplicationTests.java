@@ -5,6 +5,7 @@ import com.lmk.mapper.DepartmentMapper;
 import com.lmk.mapper.UserRoleMapper;
 import com.lmk.user.Department;
 import com.lmk.user.DepartmentExample;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WebApplication.class)
+@Slf4j
 public class WebApplicationTests {
 
 
@@ -33,6 +35,12 @@ public class WebApplicationTests {
 		departmentExample.createCriteria().andDepartmentNameEqualTo("yajun");
 		List<Department> departments = departmentMapper.selectByExample(departmentExample);
 		Assert.assertTrue(departments.size()>0);
+	}
+
+	@Test
+	public void testName() {
+		log.error("error test ==================");
+		log.info("info test===================");
 	}
 
 
